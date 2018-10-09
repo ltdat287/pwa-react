@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Router, browserHistory, Route, Link} from 'react-router';
 import './App.css';
+import {initializePush} from "./push/initialize";
 
 const NavBar = () => (
   <div className="navbar">
@@ -25,6 +26,11 @@ const Profile = (props) => (
 );
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    initializePush();
+  }
+
   render() {
     return (
       <Router history={browserHistory}>
