@@ -1,5 +1,5 @@
 // Flag for enabling cache in production
-var doCache = false;
+var doCache = true;
 var CACHE_NAME = 'pwa-app-cache';
 // Delete old caches
 self.addEventListener('activate', event => {
@@ -23,7 +23,7 @@ self.addEventListener('install', function(event) {
         .then(function(cache) {
           fetch('asset-manifest.json')
             .then(response => {
-              response.json();
+              return response.json();
             })
             .then(assets => {
               // We will cache initial page and the main.js
