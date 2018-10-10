@@ -20,4 +20,8 @@ export function initializePush() {
         console.log("Error Occurred", error);
       }
     });
+
+  messaging.onMessage(function(payload) {
+    console.log('Message received. ', payload);
+  });
 }
