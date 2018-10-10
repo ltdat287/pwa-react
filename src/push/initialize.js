@@ -1,11 +1,6 @@
-import firebase from 'firebase/app';
+import {messaging} from './firebaseConfig'
 
 export function initializePush() {
-  const messaging = firebase.messaging();
-
-  // Add the public key generated from the console here.
-  messaging.usePublicVapidKey("BIUucy26ANIooG1WJH4vFyRbVT8VKeS_mYzP8OdQQsD0F7JeZUNONdWnNREe3AmtjMaM-UGX9qITfZLlKtSsnTc");
-
   messaging
     .requestPermission()
     .then(() => {
