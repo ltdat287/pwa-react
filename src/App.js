@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Router, browserHistory, Route, Link} from 'react-router';
 import './App.css';
-import {initializePush} from "./push/initialize";
+import {createEventForFirebaseMessage, initializePush} from "./push/initialize";
 
 const NavBar = () => (
   <div className="navbar">
@@ -29,6 +29,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     initializePush();
+    createEventForFirebaseMessage();
   }
 
   render() {

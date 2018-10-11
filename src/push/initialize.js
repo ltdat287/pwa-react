@@ -20,8 +20,21 @@ export function initializePush() {
         console.log("Error Occurred", error);
       }
     });
+}
 
-  messaging.onMessage(function(payload) {
+export function createEventForFirebaseMessage() {
+  messaging.onMessage(function (payload) {
     console.log('Message received. ', payload);
+  });
+
+  // Callback fired if Instance ID token is updated.
+  messaging.onTokenRefresh(function () {
+    messaging.getToken()
+      .then(function (refreshedToken) {
+        console.log('Token refreshed. ', refreshedToken);
+      })
+      .catch(function (err) {
+        console.log('Unable to retrieve refreshed token ', err);
+      })
   });
 }

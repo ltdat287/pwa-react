@@ -75,18 +75,17 @@
       }).catch(function (err) {
         console.log(err);
       })
-    })
-  } else {
-    console.log('Service worker is not supported by browser.');
-  }
+    });
 
-  if ('serviceWorker' in navigator) {
+    // Register serviceWorker Firebase
     navigator.serviceWorker.register('firebase-messaging-sw.js')
       .then(function (registration) {
         console.log('Registration successful, scope is:', registration.scope);
       }).catch(function (err) {
       console.log('Service worker registration failed, error:', err);
     });
+  } else {
+    console.log('Service worker is not supported by browser.');
   }
 
 </script>
