@@ -32,6 +32,18 @@ class App extends Component {
     createEventForFirebaseMessage();
   }
 
+  fetchApi = () => {
+    fetch('api/test', {
+      accept: 'application/json'
+    }).then(resp => {
+      console.log(resp.json());
+    });
+  };
+
+  componentDidMount() {
+    this.fetchApi();
+  }
+
   render() {
     return (
       <Router history={browserHistory}>
