@@ -7,6 +7,7 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "firebase": "^5.5.3",
+    "firebase-admin": "^6.0.0",
     "path": "^0.12.7",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
@@ -15,9 +16,9 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "server": "concurrently \"npm run start\" \"node server/server.js\"",
+    "server": "concurrently \"npm run start\" \"node server/starter.js\"",
     "build": "react-scripts build",
-    "production": "react-scripts build && cross-env NODE_ENV=production PORT=8000 node server/server.js",
+    "production": "react-scripts build && cross-env NODE_ENV=production PORT=8000 node server/starter.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -31,6 +32,8 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
     "concurrently": "^4.0.1"
   }
 }

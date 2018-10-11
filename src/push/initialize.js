@@ -1,4 +1,5 @@
 import {messaging} from './firebaseConfig'
+import {sendTokenApi} from "../fetch";
 
 export function initializePush() {
   messaging
@@ -12,6 +13,8 @@ export function initializePush() {
       //you probably want to send your new found FCM token to the
       //application server so that they can send any push
       //notification to you.
+
+      sendTokenApi(token);
     })
     .catch(error => {
       if (error.code === "messaging/permission-blocked") {

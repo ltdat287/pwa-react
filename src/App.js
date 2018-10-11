@@ -2,11 +2,13 @@ import React, {Component} from 'react';
 import {Router, browserHistory, Route, Link} from 'react-router';
 import './App.css';
 import {createEventForFirebaseMessage, initializePush} from "./push/initialize";
+import Notify from "./components/Notify/Notify";
 
 const NavBar = () => (
   <div className="navbar">
     <Link to="/">Feed</Link>
     <Link to="/profile">Profile</Link>
+    <Link to="/notify">Notify</Link>
   </div>
 );
 
@@ -32,23 +34,12 @@ class App extends Component {
     createEventForFirebaseMessage();
   }
 
-  fetchApi = () => {
-    fetch('api/test', {
-      accept: 'application/json'
-    }).then(resp => {
-      console.log(resp.json());
-    });
-  };
-
-  componentDidMount() {
-    this.fetchApi();
-  }
-
   render() {
     return (
       <Router history={browserHistory}>
         <Route path="/" component={Feed}/>
         <Route path="/profile" component={Profile}/>
+        <Route path="/notify" component={Notify}/>
       </Router>
     );
   }
