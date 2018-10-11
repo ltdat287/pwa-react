@@ -18,7 +18,7 @@
     "start": "react-scripts start",
     "server": "concurrently \"npm run start\" \"node server/starter.js\"",
     "build": "react-scripts build",
-    "production": "react-scripts build && cross-env NODE_ENV=production PORT=8000 node server/starter.js",
+    "production": "react-scripts build && cross-env NODE_ENV=production PORT=8080 node server/starter.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
