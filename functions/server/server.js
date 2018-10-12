@@ -51,11 +51,11 @@ app.get('/api/send-message', (req, res) => {
 
 // Express only serves static assets in production
 if (process.env.NODE_ENV !== "local") {
-  app.use(express.static(path.join(__dirname, '../build')));
+  app.use(express.static(path.join(__dirname, '/build')));
 
   // Handles any requests that don't match the ones above
   app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname + '../build/index.html'));
+    res.sendFile(path.join(__dirname + '/build/index.html'));
   });
 }
 

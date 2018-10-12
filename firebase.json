@@ -1,16 +1,12 @@
 {
   "functions:": {
-    "source": "src/functions"
+    "source": "functions"
   },
   "hosting": {
-    "public": "build",
+    "public": "functions/server/build",
     "rewrites": [
       {
         "source": "**",
-        "destination": "/index.html"
-      },
-      {
-        "source": "/api/**",
         "function": "web"
       }
     ],

@@ -15,8 +15,8 @@
     "server": "concurrently \"npm run start\" \"node functions/server/server.js\"",
     "build": "react-scripts build",
     "production": "react-scripts build && cross-env NODE_ENV=local PORT=8080 node functions/server/server.js",
-    "deploy": "react-scripts build && firebase deploy --only functions",
-    "postinstall": "cd src/functions && npm install",
+    "deploy": "rm -rf functions/server/build && react-scripts build && mv build functions/server && firebase deploy --only hosting,functions",
+    "postinstall": "cd functions && npm install",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
