@@ -1,10 +1,17 @@
 {
+  "functions:": {
+    "source": "src/functions"
+  },
   "hosting": {
     "public": "build",
     "rewrites": [
       {
         "source": "**",
         "destination": "/index.html"
+      },
+      {
+        "source": "/api/**",
+        "function": "web"
       }
     ],
     "ignore": [

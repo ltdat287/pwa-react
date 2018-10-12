@@ -4,11 +4,7 @@
   "private": true,
   "proxy": "http://localhost:3001/",
   "dependencies": {
-    "body-parser": "^1.18.3",
-    "express": "^4.16.4",
     "firebase": "^5.5.3",
-    "firebase-admin": "^6.0.0",
-    "path": "^0.12.7",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-router": "^3.0.5",
@@ -16,9 +12,11 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "server": "concurrently \"npm run start\" \"node server/starter.js\"",
+    "server": "concurrently \"npm run start\" \"node functions/server/server.js\"",
     "build": "react-scripts build",
-    "production": "react-scripts build && cross-env NODE_ENV=production PORT=8000 node server/starter.js",
+    "production": "react-scripts build && cross-env NODE_ENV=local PORT=8080 node functions/server/server.js",
+    "deploy": "react-scripts build && firebase deploy --only functions",
+    "postinstall": "cd src/functions && npm install",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -32,8 +30,6 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "babel-preset-env": "^1.7.0",
-    "babel-register": "^6.26.0",
     "concurrently": "^4.0.1"
   }
 }
