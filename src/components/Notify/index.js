@@ -1,5 +1,6 @@
 import React, {PureComponent} from 'react';
 import {sendNotify} from "../../fetch";
+import NavBar from "../NavBar/index";
 
 class Notify extends PureComponent {
   sentNotify = () => {
@@ -8,9 +9,13 @@ class Notify extends PureComponent {
 
   render() {
     return (
-      <div className="show-notify">
-        <p className="page-info">This is the Notify page.</p>
-        <button onClick={() => this.sentNotify()}>Sent Notify</button>
+      <div>
+        <NavBar/>
+        <div className="page-info">
+          <p>This is the Notify page.</p>
+          <button onClick={() => this.sentNotify()}>Sent Notify</button>
+        </div>
+
       </div>
     );
   }

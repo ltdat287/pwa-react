@@ -1,16 +1,10 @@
 import React, {Component} from 'react';
-import {Router, browserHistory, Route, Link} from 'react-router';
+import {Router, browserHistory, Route} from 'react-router';
 import './App.css';
 import {createEventForFirebaseMessage, initializePush} from "./push/initialize";
-import Notify from "./components/Notify/Notify";
-
-const NavBar = () => (
-  <div className="navbar">
-    <Link to="/">Feed</Link>
-    <Link to="/profile">Profile</Link>
-    <Link to="/notify">Notify</Link>
-  </div>
-);
+import Notify from "./components/Notify/index";
+import NavBar from "./components/NavBar/index";
+import Locations from "./components/Locations/index";
 
 const Template = ({title}) => (
   <div>
@@ -40,6 +34,7 @@ class App extends Component {
         <Route path="/" component={Feed}/>
         <Route path="/profile" component={Profile}/>
         <Route path="/notify" component={Notify}/>
+        <Route path="/location" component={Locations}/>
       </Router>
     );
   }
