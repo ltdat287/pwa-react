@@ -5,6 +5,7 @@ import {createEventForFirebaseMessage, initializePush} from "./push/initialize";
 import Notify from "./components/Notify/index";
 import NavBar from "./components/NavBar/index";
 import Locations from "./components/Locations/index";
+import Camera from "./components/Camera/index";
 
 const Template = ({title}) => (
   <div>
@@ -35,6 +36,7 @@ class App extends Component {
         <Route path="/profile" component={Profile}/>
         <Route path="/notify" component={Notify}/>
         <Route path="/location" component={Locations}/>
+        <Route path="/camera" component={Camera}/>
       </Router>
     );
   }
