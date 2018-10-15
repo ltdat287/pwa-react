@@ -1,4 +1,4 @@
-export function getLocation(options) {
+function getLocation(options) {
 
   return new Promise(function (resolve, reject) {
     if (navigator.geolocation) {
@@ -16,6 +16,27 @@ export function getLocation(options) {
       reject('Geo Location not supported by browser');
     }
   });
+}
+
+export async function getImageMapUrl() {
+  try {
+    const resp = await getLocation();
+
+    const {longitude, latitude} = resp;
+    if (longitude && latitude) {
+      const latlon = latitude + ',' + longitude;
+      if (latlon) {
+        return `https://maps.googleapis.com/maps/api/staticmap?center=${latlon}
+        &zoom=14
+        &markers=color:blue|label:S|${latlon}
+        &size=800x600
+        &sensor=false
+        &key=AIzaSyD3zezWhLRYPWgRMmhZn93y57Rh7oybznE`;
+      }
+    }
+  } catch (error) {
+    console.log('location errors: ', error);
+  }
 }
 
 function locationError(error) {

@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
 import NavBar from "../NavBar/index";
-import {getLocation} from "../../utils/utils";
+import {getImageMapUrl} from "../../utils/utils";
 
 class Locations extends PureComponent {
   constructor(props) {
@@ -12,18 +12,12 @@ class Locations extends PureComponent {
   }
 
   sentLocations = () => {
-    getLocation().then(resp => {
-      const {longitude, latitude} = resp;
-      if (longitude && latitude) {
-        const latlon = latitude + ',' + longitude;
-        if (latlon) {
-          const img_url = `https://maps.googleapis.com/maps/api/staticmap?center=${latlon}&zoom=14&markers=color:blue|label:S|${latlon}&size=800x600&sensor=false&key=AIzaSyD3zezWhLRYPWgRMmhZn93y57Rh7oybznE`;
-
-          this.setState({img_url: img_url});
-        }
+    getImageMapUrl().then(resp => {
+      if (resp) {
+        this.setState({
+          img_url: resp
+        })
       }
-    }).catch(err => {
-      console.log('location errors: ', err);
     });
   };
 
