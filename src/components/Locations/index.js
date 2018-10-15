@@ -1,25 +1,32 @@
 import React, {PureComponent} from 'react';
 import NavBar from "../NavBar/index";
-import {getImageMapUrl} from "../../utils/utils";
+import GeoLocation from "../../utils/utils";
 
 class Locations extends PureComponent {
   constructor(props) {
     super(props);
 
+    this.geo_location = null;
     this.state = {
       img_url: ''
     };
   }
 
   sentLocations = () => {
-    getImageMapUrl().then(resp => {
-      if (resp) {
-        this.setState({
-          img_url: resp
-        })
-      }
-    });
+    if (this.geo_location) {
+      this.geo_location.getImageMapUrl().then(resp => {
+        if (resp) {
+          this.setState({
+            img_url: resp
+          })
+        }
+      });
+    }
   };
+
+  componentDidMount() {
+    this.geo_location = new GeoLocation();
+  }
 
   render() {
     return (
