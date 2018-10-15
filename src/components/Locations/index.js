@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
 import NavBar from "../NavBar/index";
-import {getLocation, getLocationValue} from "../../utils/utils";
+import {getLocation} from "../../utils/utils";
 
 class Locations extends PureComponent {
   constructor(props) {
@@ -22,6 +22,8 @@ class Locations extends PureComponent {
           this.setState({img_url: img_url});
         }
       }
+    }).catch(err => {
+      console.log('location errors: ', err);
     });
   };
 

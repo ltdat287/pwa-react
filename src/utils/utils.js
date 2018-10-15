@@ -1,28 +1,21 @@
 export function getLocation(options) {
-  if (navigator.geolocation) {
-    return new Promise(function (resolve, reject) {
+
+  return new Promise(function (resolve, reject) {
+    if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function (position) {
-        const coords = showPositions(position);
+        const coords = {
+          longitude: position.coords.longitude,
+          latitude: position.coords.latitude,
+        };
 
         resolve(coords);
       }, function (error) {
-        showLocationsErrors(error);
+        reject(locationError(error));
       }, options);
-    });
-  } else {
-    console.log('Geo Location not supported by browser');
-  }
-}
-
-function showPositions(position) {
-  return {
-    longitude: position.coords.longitude,
-    latitude: position.coords.latitude,
-  };
-}
-
-function showLocationsErrors(error) {
-  console.log('location errors: ', locationError(error));
+    } else {
+      reject('Geo Location not supported by browser');
+    }
+  });
 }
 
 function locationError(error) {
