@@ -11,6 +11,7 @@ class NavBar extends PureComponent {
         <Link to="/notify">Notify</Link>
         <Link to="/location">Location</Link>
         <Link to="/camera">Camera</Link>
+        <Link to="/privacy">Privacy</Link>
       </div>
     );
   }

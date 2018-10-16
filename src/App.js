@@ -6,6 +6,7 @@ import Notify from "./components/Notify/index";
 import NavBar from "./components/NavBar/index";
 import Locations from "./components/Locations/index";
 import Camera from "./components/Camera/index";
+import Privacy from "./components/Privacy/index";
 
 const Template = ({title}) => (
   <div>
@@ -37,6 +38,7 @@ class App extends Component {
         <Route path="/notify" component={Notify}/>
         <Route path="/location" component={Locations}/>
         <Route path="/camera" component={Camera}/>
+        <Route path="/privacy" component={Privacy}/>
       </Router>
     );
   }

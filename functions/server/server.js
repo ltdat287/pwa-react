@@ -1,3 +1,5 @@
+const {htmlTemplate} = require("./htmlTemplate");
+
 const {sendMessageTopic, sendTokenTopic} = require("./firebaseAdmin");
 
 const express = require("express");
@@ -47,6 +49,11 @@ app.get('/api/send-message', (req, res) => {
   res.send({
     success: true
   });
+});
+
+app.get('/privacy', (req, res) => {
+  res.writeHead(200, {"Content-Type": "text/html"});
+  res.end(htmlTemplate());
 });
 
 // Express only serves static assets in production
