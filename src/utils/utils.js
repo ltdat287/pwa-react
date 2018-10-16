@@ -35,7 +35,12 @@ function locationError(error) {
   }
 }
 
-export default class GeoLocation {
+class GeoLocation {
+  constructor() {
+    getLocation.bind(this);
+    locationError.bind(this);
+  }
+
   async getImageMapUrl() {
     try {
       const resp = await getLocation();
@@ -57,3 +62,5 @@ export default class GeoLocation {
     }
   }
 }
+
+export default GeoLocation;
