@@ -68,7 +68,7 @@ app.get('/privacy', (req, res) => {
     const html = ReactDOMServer.renderToString(<Privacy />);
 
     // inject the rendered app into our html and send it
-    res.send(
+    return res.send(
       htmlData.replace(
         '<div id="root"></div>',
         `<div id="root">${html}</div>`

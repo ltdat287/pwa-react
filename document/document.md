@@ -20,3 +20,9 @@ curl -X POST \
     }
 }'
 ```
+
+## Command Babel convert a file to ES 5
+[https://codeburst.io/es6-in-cloud-functions-for-firebase-959b35e31cb0](https://codeburst.io/es6-in-cloud-functions-for-firebase-959b35e31cb0)
+```$xslt
+babel server/server.js --require=ignore-styles,babel-register --presets=es2015,react --out-file=server/server-es5.js
+```

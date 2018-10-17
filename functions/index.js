@@ -1,5 +1,5 @@
 const functions = require('firebase-functions');
-const {app} = require('./server/server');
+const {app} = require('./server/server-es5');
 
 // Create and Deploy Your First Cloud Functions
 // https://firebase.google.com/docs/functions/write-firebase-functions
