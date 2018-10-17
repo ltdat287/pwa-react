@@ -1,9 +1,12 @@
-const {htmlTemplate} = require("./htmlTemplate");
+import React from 'react'
+import ReactDOMServer from 'react-dom/server'
+import Privacy from "../../src/components/Privacy/index";
 
 const {sendMessageTopic, sendTokenTopic} = require("./firebaseAdmin");
 
 const express = require("express");
 const path = require('path');
+const fs = require("fs");
 const bodyParser = require('body-parser');
 
 const app = express();
@@ -52,8 +55,26 @@ app.get('/api/send-message', (req, res) => {
 });
 
 app.get('/privacy', (req, res) => {
-  res.writeHead(200, {"Content-Type": "text/html"});
-  res.end(htmlTemplate());
+  // point to the html file created by CRA's build tool
+  const filePath = path.resolve(__dirname, 'build', 'index.html');
+
+  fs.readFile(filePath, 'utf8', (err, htmlData) => {
+    if (err) {
+      console.error('err', err);
+      return res.status(404).end()
+    }
+
+    // render the app as a string
+    const html = ReactDOMServer.renderToString(<Privacy />);
+
+    // inject the rendered app into our html and send it
+    res.send(
+      htmlData.replace(
+        '<div id="root"></div>',
+        `<div id="root">${html}</div>`
+      )
+    );
+  });
 });
 
 // Express only serves static assets in production

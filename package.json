@@ -13,9 +13,9 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "server": "concurrently \"npm run start\" \"node functions/server/server.js\"",
+    "server": "concurrently \"npm run start\" \"node functions/server/starter.js\"",
     "build": "react-scripts build",
-    "production": "react-scripts build && cross-env NODE_ENV=local PORT=8080 node functions/server/server.js",
+    "production": "react-scripts build && cross-env NODE_ENV=local PORT=8080 node functions/server/starter.js",
     "deploy": "rm -rf functions/server/build && react-scripts build && mv build functions/server && firebase deploy --only hosting,functions",
     "postinstall": "cd functions && npm install",
     "test": "react-scripts test",
